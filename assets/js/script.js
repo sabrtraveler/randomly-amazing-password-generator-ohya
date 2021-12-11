@@ -67,9 +67,10 @@ function generatePassword(){
   }
 
   // Warning that user must choose one option  
-    alert("You will be asked if you want the password to have lowercase, uppercase, numeric and/or special characters in your password. You must choose atleast one option.")
+    alert("You will be asked if you want the password to have lowercase, uppercase, numeric and/or special characters in your password. You have to choose atleast one option.")
 
-
+  //loop to make sure the user chooses atleast one type of character for pass
+  while (characters === "") {
   //  Ask the user if pass should contain lowercase characters
   var containsLowercase = confirm("Would you like lowercase characters in your password?")
   if (containsLowercase) {
@@ -99,14 +100,15 @@ function generatePassword(){
     alert("Your pass must contain atleast one type of character!")
     }
 
-    
- // Set password to empty string
+  }
+
+ // Set password to empty string as a base
  var password = "";
-// Loop  for as long as the length of password
+// Loop for as long as the length of password
 for (var i = 0; i < passLength; i++) {
 // A random index is picked from the string of characters and combined with the empty password string
-// continous loop until password is generated
-password = password+ characters[Math.floor(Math.random() * characters.length)]
+// continous until password is generated
+password = password+ characters[Math.floor(Math.random()* characters.length)]
 }
 return password
     
