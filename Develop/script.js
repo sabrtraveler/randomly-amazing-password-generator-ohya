@@ -1,4 +1,4 @@
-//Ask user what type of pass they want
+//Ask user what type of pass they want //Pseudocode
 // a. how long do you want the pass to be? Prompt -> depending on  response -> set password length
 // -> if statement
 // -> store the requested length into Password Object
@@ -20,6 +20,7 @@
 // -> store the requested answer into Password Object
 
 // Assignment code here
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -53,20 +54,20 @@ generateBtn.addEventListener("click", writePassword);
 //Function to generate password
 function generatePassword(){
 
-   // Intial an empty string for the possible characters contained in their password
+   // Set characters to empty string for the potential characters for the user pass
    var characters = "";
 
-  //ask user for pass length and store in a variable
-  var passLength = prompt("How long do you want the pass to be?");
+  // Ask user for pass length and store in a variable
+  var passLength = prompt("How long do you want the pass to be? Length must be between 8-128 characters. Numerical digits only!");
 
-  //make sure the pass length is between 8-128 characters
-  while (passLength !== null && (isNaN(passLength)) || passLength < 8 || passLength > 128){
-    alert("You must put a number length between 8 and 128 characters")
-    passLength = prompt("How long do you want the pass to be?");
+  // Make sure the pass length is between 8-128 characters
+  while (passLength < 8 || passLength > 128 || passLength !== null && (isNaN(passLength))){
+    alert("You must put a number length between 8 and 128 characters.")
+    passLength = prompt("How long do you want the pass to be? Length must be between 8-128 characters. Numerical digits only!");
   }
 
-  // warning that user must choose one option 
-    alert("You will be asked if you want the password to have lowercase, uppercase, numeric ands/or special characters in your password. You must choose atleast one option.")
+  // Warning that user must choose one option  
+    alert("You will be asked if you want the password to have lowercase, uppercase, numeric and/or special characters in your password. You must choose atleast one option.")
 
 
   //  Ask the user if pass should contain lowercase characters
@@ -93,18 +94,18 @@ function generatePassword(){
       characters += special;
   }
 
-  // Tell the user they must contain atleast one type of character in pass
+  // Tell the user they must contain atleast one type of character type in pass
   if (characters === "") {
     alert("Your pass must contain atleast one type of character!")
     }
 
     
- // Declares a variable as an empty string to be added to
- let password = "";
-// A for loop continues until for the duration of the length of the password
+ // Set password to empty string
+ var password = "";
+// Loop  for as long as the length of password
 for (var i = 0; i < passLength; i++) {
-// A random index is chosen from the string of characters and added to the empty password string
-// This continues until the entire password is created
+// A random index is picked from the string of characters and combined with the empty password string
+// continous loop until password is generated
 password = password+ characters[Math.floor(Math.random() * characters.length)]
 }
 return password
